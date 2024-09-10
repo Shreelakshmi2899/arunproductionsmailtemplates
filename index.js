@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-function event(eventname, datetime,address,description) {
+function event(eventname, datetime,address,description,imageqr) {
   return `
     <!DOCTYPE html>
 <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -253,7 +253,7 @@ function event(eventname, datetime,address,description) {
                                                         <tr>
                                                             <td class="pad" style="width:100%;">
                                                                 <div align="center" class="alignment" style="line-height:10px">
-                                                                    <div style="max-width: 324px;"><img height="auto" src="images/cnet-qr-code.webp" style="display: block; height: auto; border: 0; width: 100%;" width="324" /></div>
+                                                                    <div style="max-width: 324px;"><img height="auto" src=${imageqr} style="display: block; height: auto; border: 0; width: 100%;" width="324" /></div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -275,7 +275,7 @@ function event(eventname, datetime,address,description) {
                                                                     <v:textbox inset="0px,1px,0px,0px">
                                                                     <center dir="false" style="color:#ffffff;font-family:Arial, sans-serif;font-size:15px">
                                                                     <![endif]-->
-                                                                    <div style="background-color:#004afd;border-bottom:0px solid transparent;border-left:0px solid transparent;border-radius:58px;border-right:0px solid transparent;border-top:0px solid transparent;color:#ffffff;display:inline-block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:15px;font-weight:undefined;mso-border-alt:none;padding-bottom:6px;padding-top:7px;text-align:center;text-decoration:none;width:auto;word-break:keep-all;"><span style="word-break: break-word; padding-left: 17px; padding-right: 17px; font-size: 15px; display: inline-block; letter-spacing: normal;"><span style="word-break: break-word; line-height: 30px;">Click Here</span></span></div>
+                                                                   <a href="https://www.google.com" target = "_blank" style ="text-decoration:none;"> <div style="background-color:#004afd;border-bottom:0px solid transparent;border-left:0px solid transparent;border-radius:58px;border-right:0px solid transparent;border-top:0px solid transparent;color:#ffffff;display:inline-block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:15px;font-weight:undefined;mso-border-alt:none;padding-bottom:6px;padding-top:7px;text-align:center;text-decoration:none;width:auto;word-break:keep-all;"><span style="word-break: break-word; padding-left: 17px; padding-right: 17px; font-size: 15px; display: inline-block; letter-spacing: normal;"><span style="word-break: break-word; line-height: 30px;">Click Here</span></span></div></a>
                                                                     <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
                                                                 </div>
                                                             </td>
@@ -557,6 +557,271 @@ function event(eventname, datetime,address,description) {
 `;
 }
 
+function welcomeevent(username,eventname) {
+    return `
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Success - Arun Production</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #555555; /* Unified elegant dark color for the entire page */
+            color: #f5f5f5; /* Light text color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Center the container vertically and horizontally */
+        }
+
+        .email-container {
+            max-width: 600px;
+            background-color: #555555; /* Darker email container background */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Unified Header and Content Styling */
+        .content {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #555555; /* Red background for the content section */
+            color: #ffffff; /* White text for better contrast */
+        }
+
+        .content img {
+            max-width: 200px; /* Increase max-width to enlarge the logo */
+            margin-bottom: 10px;
+            border-radius: 50%;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin: 10px 0;
+            color: #ffffff; /* White text for the title */
+        }
+
+        .content h2 {
+            color: #ffebee; /* Slightly lighter shade for subheading */
+            font-size: 24px;
+            margin: 20px 0 15px;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #f5f5f5;
+            margin-bottom: 30px;
+        }
+
+        .content p span {
+            color: #ffccbc; /* Lighter red/orange for the highlighted text */
+            font-weight: bold;
+        }
+
+        .event-details {
+            background-color:#555555; /* Gray background for event details */
+            color: #ffffff;
+            padding: 20px;
+            border-top: 5px solid #555555; /* Red border to match content section */
+        }
+
+        .event-details strong {
+            color: #ffab91; /* Lighter orange for event title */
+        }
+
+        .footer {
+            background-color: #da3b0b; /* Slightly lighter gray footer */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #ffccbc; /* Soft orange for links */
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: #ffffff; /* White text on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="email-container">
+    <!-- Unified Header with Logo, Company Name, and Event Details -->
+    <div class="content">
+        <img src="C:\Users\PRERANA R\Downloads\Arun Productions logo.png" alt="Arun Production Logo"/>
+        <h1>Arun Production</h1>
+        <h2>Welcome to the Event!</h2>
+        <p>You have successfully logged in as <span>${username}</span>.</p>
+    </div>
+
+    <!-- Event Details Section -->
+    <div class="event-details">
+        <p>We are excited to have you for our upcoming event "<strong>${eventname}</strong>".</p>
+        <p>Stay tuned for more details and let the rhythm take over!</p>
+    </div>
+
+    <!-- Footer Section with Website Link -->
+    <div class="footer">
+        <p>Visit our official website: <a href="https://djarunproductions.com/">www.arunproduction.com</a></p>
+    </div>
+</div>
+
+</body>
+</html>                    
+                
+  `;
+  }
+
+  function feedback(eventname) {
+    return `
+                      
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Feedback - Arun Production</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #555555; /* Unified background color for the entire page */
+            color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Center the container vertically and horizontally */
+        }
+
+        .email-container {
+            max-width: 600px;
+            width: 100%;
+            background-color: #1c1a1a; /* Same background color as the body */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .content {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #555555;
+            color: #ffffff;
+        }
+
+        .content img {
+            max-width: 200px; /* Increased size of the logo */
+            margin-bottom: 10px;
+            border-radius: 50%;
+        }
+
+        .content h1 {
+            font-size: 32px;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+
+        .content h2 {
+            color: #ffebee;
+            font-size: 24px;
+            margin: 20px 0 15px;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #f5f5f5;
+            margin-bottom: 30px;
+        }
+
+        .content p span {
+            color: #ffccbc;
+            font-weight: bold;
+        }
+
+        .feedback-section {
+            background-color: #555555;
+            color: #ffffff;
+            padding: 20px;
+            border-top: 5px solid #555555;
+            text-align: center;
+        }
+
+        .feedback-section p {
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .feedback-section a {
+            background-color: #ffab91;
+            color: #1c1a1a;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .feedback-section a:hover {
+            background-color: #ff8a65;
+            color: #ffffff;
+        }
+
+        .footer {
+            background-color: #1c1a1a;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #ffccbc;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="email-container">
+    <!-- Header with Event Title and Logo -->
+    <div class="content">
+        <img src="https://firebasestorage.googleapis.com/v0/b/arunproductions.appspot.com/o/users%2FqsnVaPZl60P7KC0lLlrUR6XXnqy1%2Fqr_codes%2Femail_images%2FWhatsApp_Image_2024-09-05_at_12.35.08_7a9ae555-removebg-preview.png?alt=media&token=243256f4-6a66-47a7-a663-23ac5b264f53" alt="Arun Production Logo" />
+        <h1>Arun Production</h1>
+        <h2>Thank You for Attending!</h2>
+        <p>We hope you enjoyed <span>${eventname}</span>!</p>
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="feedback-section">
+        <p>Your feedback is valuable to us. Please take a moment to share your thoughts on the event.</p>
+        <a href="https://forms.gle/dxokDTqP875zTRZe8" target="_blank">Give Feedback</a>
+    </div>
+
+    <!-- Footer Section with Website Link -->
+    <div class="footer">
+        <p>Visit our official website: <a href="https://djarunproductions.com/">www.arunproduction.com</a></p>
+    </div>
+</div>
+
+</body>
+</html>       
+  `;
+  }
+
 
  
   
@@ -570,15 +835,15 @@ function event(eventname, datetime,address,description) {
 
 // POST endpoint to send email
 app.post("/event", async (req, res) => {
-  const { email, eventname, datetime,address,description} = req.body;
+  const { email, eventname, datetime,address,description,imageqr} = req.body;
 
-  if (!email || !eventname || !datetime || !address || ! description) {
+  if (!email || !eventname || !datetime || !address || ! description|| !imageqr) {
     return res
       .status(400)
-      .send({ error: "email, eventname, datetime,address, description" });
+      .send({ error: "email, eventname, datetime,address, description parameters are required" });
   }
 
-  const htmlContent = event(eventname, datetime,address,description);
+  const htmlContent = event(eventname, datetime,address,description,imageqr);
 
   try {
     let info = await transporter.sendMail({
@@ -596,177 +861,25 @@ app.post("/event", async (req, res) => {
   }
 });
 
-app.post("/send-instituteemail", async (req, res) => {
-    const { email,institutename,instituteemail,institutepassword } = req.body;
+app.post("/welcome_event", async (req, res) => {
+    const { email,username,eventname } = req.body;
   
     if (!email || 
-        !institutename ||
-         !instituteemail|| 
-         !institutepassword) {
-      return res
-        .status(400)
-        .send({ error: "email, institutename, instituteemail, and institutepassword parameters are required" });
-    }
-  
-    const htmlContent = institute(institutename, instituteemail, institutepassword);
-  
-    try {
-      let info = await transporter.sendMail({
-        from: "Info@gully2global.com", // Sender address
-        to: email, // List of receivers
-        subject: "Institute Account created", // Subject line
-        html: htmlContent, // HTML body content
-      });
-  
-      console.log("Message sent: %s", info.messageId);
-      res.status(200).send({ message: "Email sent successfully" });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      res.status(500).send({ error: "Failed to send email" });
-    }
-  });
-
-  app.post("/user-approve", async (req, res) => {
-    const { email,username} = req.body;
-  
-    if (!email || 
-        !username) {
-      return res
-        .status(400)
-        .send({ error: "email,and password parameters are required" });
-    }
-  
-    const htmlContent = userapprove(username);
-  
-    try {
-      let info = await transporter.sendMail({
-        from: "Info@gully2global.com", // Sender address
-        to: email, // List of receivers
-        subject: "Account Approved", // Subject line
-        html: htmlContent, // HTML body content
-      });
-  
-      console.log("Message sent: %s", info.messageId);
-      res.status(200).send({ message: "Email sent successfully" });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      res.status(500).send({ error: "Failed to send email" });
-    }
-  });
-
-  app.post("/user-reject", async (req, res) => {
-    const { email,username} = req.body;
-  
-    if (!email || 
-        !username) {
-      return res
-        .status(400)
-        .send({ error: "email,and username parameters are required" });
-    }
-  
-    const htmlContent = userreject(username);
-  
-    try {
-      let info = await transporter.sendMail({
-        from: "Info@gully2global.com", // Sender address
-        to: email, // List of receivers
-        subject: "Account Rejected", // Subject line
-        html: htmlContent, // HTML body content
-      });
-  
-      console.log("Message sent: %s", info.messageId);
-      res.status(200).send({ message: "Email sent successfully" });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      res.status(500).send({ error: "Failed to send email" });
-    }
-  });
-
-  app.post("/training-cancel", async (req, res) => {
-    const { email,trainingname,username} = req.body;
-  
-    if (!email || 
-        !trainingname||
-        !username) {
-      return res
-        .status(400)
-        .send({ error: "email,trainingname and username parameters are required" });
-    }
-  
-    const htmlContent = trainingcancelrequest(trainingname,username);
-  
-    try {
-      let info = await transporter.sendMail({
-        from: "Info@gully2global.com", // Sender address
-        to: email, // List of receivers
-        subject: "Training Cancellation Request", // Subject line
-        html: htmlContent, // HTML body content
-      });
-  
-      console.log("Message sent: %s", info.messageId);
-      res.status(200).send({ message: "Email sent successfully" });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      res.status(500).send({ error: "Failed to send email" });
-    }
-  });
-
-  app.post("/complaint", async (req, res) => {
-    const { email,trainingname,username,description} = req.body;
-  
-    if (!email || 
-        !trainingname||
-        !username||
-        !description) {
-      return res
-        .status(400)
-        .send({ error: "email,trainingname and username parameters are required" });
-    }
-  
-    const htmlContent = trainingcomplaint(trainingname,username,description);
-  
-    try {
-      let info = await transporter.sendMail({
-        from: "Info@gully2global.com", // Sender address
-        to: email, // List of receivers
-        subject: "Complaint", // Subject line
-        html: htmlContent, // HTML body content
-      });
-  
-      console.log("Message sent: %s", info.messageId);
-      res.status(200).send({ message: "Email sent successfully" });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      res.status(500).send({ error: "Failed to send email" });
-    }
-  });
-  app.post("/training-session", async (req, res) => {
-    const { email,institutename,trainingname,trainingdescription,startdate,enddate,
-        trainingtimings,numberofstudents,traininglocation} = req.body;
-  
-    if (!email || 
-        !institutename||
-        !trainingname||
-        !trainingdescription||
-        !startdate||
-        !enddate||
-        !trainingtimings||
-        !numberofstudents||
-        !traininglocation
+        !username ||
+         !eventname 
          ) {
       return res
         .status(400)
-        .send({ error: "email,trainingname and username parameters are required" });
+        .send({ error: "email, username and eventname parameters are required" });
     }
   
-    const htmlContent = trainingsession(institutename,trainingname,trainingdescription,startdate,enddate,
-        trainingtimings,numberofstudents,traininglocation );
+    const htmlContent = welcomeevent(username,eventname);
   
     try {
       let info = await transporter.sendMail({
         from: "Info@gully2global.com", // Sender address
         to: email, // List of receivers
-        subject: "Training session details", // Subject line
+        subject: "Welcome Event", // Subject line
         html: htmlContent, // HTML body content
       });
   
@@ -778,22 +891,23 @@ app.post("/send-instituteemail", async (req, res) => {
     }
   });
 
-app.post("/approved-created", async (req, res) => {
-    const { email, username, useremail, password } = req.body;
+
+app.post("/feedback", async (req, res) => {
+    const { email, eventname } = req.body;
   
-    if (!email || !username || !useremail || !password) {
+    if (!email ||!eventname) {
       return res
         .status(400)
-        .send({ error: "email, username, useremail, and password parameters are required" });
+        .send({ error: "email, eventname parameters are required" });
     }
   
-    const htmlContent = approvedcreated(username,useremail,password);
+    const htmlContent = feedback(eventname);
   
     try {
       let info = await transporter.sendMail({
         from: "Info@gully2global.com", // Sender address
         to: email, // List of receivers
-        subject: "Account Approved & Created", // Subject line
+        subject: "Feedback", // Subject line
         html: htmlContent, // HTML body content
       });
   
